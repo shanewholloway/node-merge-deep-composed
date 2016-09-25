@@ -1,11 +1,19 @@
 {
   "name": "merge-deep-composed",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Extensible merge-deep implementation",
+  "keywords": [
+    "merge-deep",
+    "merge",
+    "extend",
+    "deep-merge",
+    "deep"
+  ],
+  "homepage": "https://github.com/shanewholloway/node-merge-deep-composed",
+  "bugs": "https://github.com/shanewholloway/node-merge-deep-composed/issues",
+  "repository": "shanewholloway/node-merge-deep-composed",
   "author": "Shane Holloway <shane.holloway@ieee.org>",
-  "keywords": ["merge-deep", "merge", "extend", "deep-merge", "deep"],
   "license": "ISC",
-
   "main": "index.js",
   "scripts": {
     "prepublish": "npm -s run test",
