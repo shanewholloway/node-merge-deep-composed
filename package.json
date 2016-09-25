@@ -1,0 +1,18 @@
+{
+  "name": "merge-deep-composed",
+  "version": "0.1.0",
+  "description": "Extensible merge-deep implementation",
+  "author": "Shane Holloway <shane.holloway@ieee.org>",
+  "keywords": ["merge-deep", "merge", "extend", "deep-merge", "deep"],
+  "license": "ISC",
+
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "npm -s run test",
+    "preversion": "npm -s run test",
+    "test": "node test/test-deepmerge.js"
+  },
+  "dependencies": {
+    "isobject": "^2.1.0"
+  }
+}
