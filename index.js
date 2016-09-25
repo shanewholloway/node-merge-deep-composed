@@ -64,17 +64,20 @@ function _mergeDeepOne(api, target, obj, path) {
     if (result !== undefined) return result
   }
 
+  let outer_ctx = {api, target, obj, path}
   for(let key of Object.keys(obj)) {
     let key_path = path ? `${path}.${key}` : key
     let value_src = obj[key], src_kind = kindOf(value_src)
     let value_tgt = target[key], tgt_kind = kindOf(value_tgt)
     let op = _merge_op_lookup[[tgt_kind,src_kind]] || 'merge_other'
-    let info = {op, tgt_kind, src_kind, key_path}
+    let info = {op, tgt_kind, src_kind, key, key_path}
+    Object.defineProperty(info, 'outer_ctx', {value: outer_ctx})
 
     let value = !api.item ? undefined
       : api.item(value_tgt, value_src, info)
 
     if (value !== undefined) {
+      if (info.op == null) continue
       info.op = op = 'override'
     } else if (value_tgt === undefined) {
       info.op = op = 'assign'
