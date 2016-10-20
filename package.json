@@ -1,6 +1,6 @@
 {
   "name": "merge-deep-composed",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Extensible merge-deep implementation",
   "keywords": [
     "merge-deep",
@@ -22,5 +22,8 @@
   },
   "dependencies": {
     "isobject": "^2.1.0"
+  },
+  "devDependencies": {
+    "tap-lite-tester": "^0.2.0"
   }
 }

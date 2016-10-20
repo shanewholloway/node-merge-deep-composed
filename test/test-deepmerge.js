@@ -1,7 +1,7 @@
 'use strict'
 const assert = require('assert')
 const inspect = obj => require('util').inspect(obj, {colors:true, depth:null})
-const tap = require('./_tap_minimal')
+const tap = require('tap-lite-tester')
 
 const moduleUnderTest = require('../index')
 const merge_deep = require('../index')
@@ -15,7 +15,7 @@ let examples = require('fs').readdirSync(`${__dirname}/../examples/`)
   .filter(filename => /^ex_.*\.\w+/.test(filename))
   .map(filename =>
     tap.test(`example/${filename}`,
-      () => require(`../examples/${filename}`)) )
+      () => { require(`../examples/${filename}`) } ))
 
 tap.plan(8 + examples.length)
 
