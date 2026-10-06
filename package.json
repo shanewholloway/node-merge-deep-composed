@@ -1,6 +1,6 @@
 {
   "name": "merge-deep-composed",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Extensible merge-deep implementation",
   "keywords": [
     "merge-deep",
@@ -11,7 +11,9 @@
   ],
   "homepage": "https://github.com/shanewholloway/node-merge-deep-composed",
   "bugs": "https://github.com/shanewholloway/node-merge-deep-composed/issues",
-  "repository": "shanewholloway/node-merge-deep-composed",
+  "repository": {
+    "url": "git+https://github.com/shanewholloway/node-merge-deep-composed"
+  },
   "author": "Shane Holloway <shane.holloway@ieee.org>",
   "license": "ISC",
   "main": "index.js",
@@ -20,10 +22,8 @@
     "preversion": "npm -s run test",
     "test": "node test/test-deepmerge.js"
   },
-  "dependencies": {
-    "isobject": "^2.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "tap-lite-tester": "^0.2.0"
+    "tap-lite-tester": "^0.5.2"
   }
 }

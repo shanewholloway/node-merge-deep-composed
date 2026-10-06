@@ -1,5 +1,4 @@
 'use strict'
-const isObject = require('isobject')
 
 const merge_deep_api = {
   start(api, target, argObjects) {
@@ -50,10 +49,11 @@ const merge_deep_api = {
 const kindOf = v =>
   v===undefined ? 'undefined'
   : v===null ? 'null'
-  : isObject(v) ? 'object'
   : Array.isArray(v) ? 'array'
+  : 'object' === typeof v ? 'object'
   : 'other'
 
+const _ignore_keys = ['__proto__', 'constructor', 'prototype']
 const _merge_op_lookup = {
   'array,array': 'merge_arrays',
   'object,object': 'merge_objects', }
@@ -66,6 +66,8 @@ function _mergeDeepOne(api, target, obj, path) {
 
   let outer_ctx = {api, target, obj, path}
   for(let key of Object.keys(obj)) {
+    if (key === '__proto__' || key === 'prototype' || key === 'constructor') continue;
+
     let key_path = path ? `${path}.${key}` : key
     let value_src = obj[key], src_kind = kindOf(value_src)
     let value_tgt = target[key], tgt_kind = kindOf(value_tgt)

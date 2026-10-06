@@ -159,4 +159,10 @@ tap.test('merge object with enter exit log', () => {
   }
 })
 
+tap.test('validate remediated CWE-1321: prototype pollution', () => {
+  assert.equal(undefined, ({}).polluted) 
+  merge_deep({}, JSON.parse('{"__proto__":{"polluted":"owned"}}'));
+  assert.equal(undefined, ({}).polluted) 
+})
+
 tap.finish()
